@@ -20,11 +20,6 @@ public class ListUsingTheirMethodsSolution implements ListUsingTheirMethodsExerc
 
     @Override
     public boolean existsPersonInList(List<Person> people, Person personToAdd) {
-        for (Person personInList : people) {
-            if (personInList.equals(personToAdd)){
-                return true;
-            }
-        }
-        return false;
+        return people.contains(personToAdd);
     }
 }
