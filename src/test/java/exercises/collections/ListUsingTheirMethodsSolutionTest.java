@@ -33,7 +33,9 @@ public class ListUsingTheirMethodsSolutionTest {
         Person person2 = new Person(2L, "Jose", "Gomez");
 
         List<Person> expected = Collections.singletonList(person1);
-        List<Person> people = Arrays.asList(person1, person2);
+        List<Person> people = new ArrayList<>();
+        people.add(person1);
+        people.add(person2);
 
         // when
         listUsingTheirMethodsExercise.removePerson(people, person2);
