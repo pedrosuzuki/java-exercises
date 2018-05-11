@@ -26,12 +26,12 @@ public class MaxElementFromList {
 
     public Person maxUsingFor(List<Person> people) {
         Person maxPerson = null;
-        for(Person currentPerson : people) {
-            if(maxPerson == null) {
+        for (Person currentPerson : people) {
+            if (maxPerson == null) {
                 maxPerson = currentPerson;
             } else {
                 int compareResult = personComparator.compare(maxPerson, currentPerson);
-                if(compareResult < 0) {
+                if (compareResult < 0) {
                     maxPerson = currentPerson;
                 }
             }
@@ -45,11 +45,43 @@ public class MaxElementFromList {
     // Optional has a method which is called orElse
     //  - if it has a Person, it will return it
     //  - if it has not a Person, will return null
-    public Person maxUsingStream(List<Person> people){
+    public Person maxUsingStream(List<Person> people) {
         return people.stream()
                 .max(personComparator)
                 .orElse(null);
     }
 
-    // TODO: maxUsingForWithIndex and with while
+    public Person maxUsingForWithIndex(List<Person> people) {
+        Person maxPerson = null;
+        for (int personIndex = 0; personIndex < people.size(); personIndex++) {
+            Person currentPerson = people.get(personIndex);
+            if (maxPerson == null) {
+                maxPerson = currentPerson;
+            } else {
+                int compareResult = personComparator.compare(maxPerson, currentPerson);
+                if (compareResult < 0) {
+                    maxPerson = currentPerson;
+                }
+            }
+        }
+        return maxPerson;
+    }
+
+    public Person maxUsingForWithIndexWhile(List<Person> people) {
+        Person maxPerson = null;
+        int indexPeopleList = 0;
+        while (indexPeopleList < people.size()) {
+            Person currentPerson = people.get(indexPeopleList);
+            if (maxPerson == null) {
+                maxPerson = currentPerson;
+            } else {
+                int compareResult = personComparator.compare(maxPerson, currentPerson);
+                if (compareResult < 0) {
+                    maxPerson = currentPerson;
+                }
+            }
+            indexPeopleList++;
+        }
+        return maxPerson;
+    }
 }
